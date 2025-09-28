@@ -6,7 +6,8 @@
 
   <div class="grid">
     <div><label>Nome*</label><input name="name" required value="<?= e($data['name']) ?>"></div>
-    <div><label>CPF</label><input name="cpf" value="<?= e($data['cpf']) ?>"></div>
+  <div><label>CPF</label>
+  <input name="cpf" pattern="\d{11}" title="Digite 11 dígitos (apenas números)" value="<?= e($data['cpf']) ?>"></div>
     <div><label>Nascimento</label><input type="date" name="birthdate" value="<?= e($data['birthdate']) ?>"></div>
     <div>
       <label>Sexo</label>

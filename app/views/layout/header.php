@@ -44,10 +44,16 @@ textarea{min-height:90px}
       <?php if ($u): ?>
         <span class="muted">Olá, <?= e($u['name']) ?> (<?= e($u['role']) ?>)</span>
         <a class="btn" href="<?= e(APP_URL) ?>/">Dashboard</a>
+
+        <?php if (user_has_role(['recepcao','admin'])): ?>
+        <a class="btn" href="<?= e(APP_URL) ?>/?r=triage/index">Triagem</a>
+        <?php endif; ?>
+
         <a class="btn" href="<?= e(APP_URL) ?>/?r=patients/index">Pacientes</a>
         <a class="btn" href="<?= e(APP_URL) ?>/?r=auth/logout">Sair</a>
-      <?php else: ?>
+        <?php else: ?>
         <a class="btn" href="<?= e(APP_URL) ?>/?r=auth/login">Entrar</a>
       <?php endif; ?>
+
     </div>
   </div>

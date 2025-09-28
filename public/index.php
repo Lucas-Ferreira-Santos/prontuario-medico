@@ -40,6 +40,30 @@ switch ($mod) {
     else http_response_code(404);
     break;
 
+  case 'triage':
+    require_once __DIR__ . '/../app/controllers/TriageController.php';
+    $c = new TriageController();
+    if     ($act==='index')     $c->index();
+    elseif ($act==='form')      $c->form();
+    elseif ($act==='save')      $c->save();
+    elseif ($act==='view')      $c->view();
+    elseif ($act==='set_status')$c->set_status();
+    else http_response_code(404);
+    break;
+    
+  case 'triage':
+  require_once __DIR__ . '/../app/controllers/TriageController.php';
+  $c=new TriageController();
+  if     ($act==='index')      $c->index();
+  elseif ($act==='form')       $c->form();
+  elseif ($act==='save')       $c->save();
+  elseif ($act==='view')       $c->view();
+  elseif ($act==='set_status') $c->set_status();
+  else http_response_code(404);
+  break;
+
+
+
   default:
     http_response_code(404);
 }

@@ -11,15 +11,20 @@
 </div>
 
 <table class="table">
-  <thead><tr><th>Nome</th><th>CPF</th><th>Nascimento</th><th>Telefone</th><th>Ações</th></tr></thead>
+  <thead>
+    <tr><th>Nome</th><th>CPF</th><th>Nascimento</th><th>Telefone</th><th>Ações</th></tr>
+  </thead>
   <tbody>
   <?php foreach ($rows as $r): ?>
     <tr>
       <td><?= e($r['name']) ?></td>
-      <td><?= e($r['cpf']) ?></td>
+      <td><?= e(cpf_mask($r['cpf'])) ?></td> <!-- opcional: mostrar CPF formatado -->
       <td><?= e($r['birthdate']) ?></td>
       <td><?= e($r['phone']) ?></td>
       <td>
+        <?php if (user_has_role(['recepcao','admin'])): ?>
+          <a class="btn sm" href="<?= e(APP_URL) ?>/?r=triage/form&patient_id=<?= (int)$r['id'] ?>">Triagem</a>
+        <?php endif; ?>
         <a class="btn sm" href="<?= e(APP_URL) ?>/?r=patients/view&id=<?= (int)$r['id'] ?>">Abrir</a>
         <a class="btn sm" href="<?= e(APP_URL) ?>/?r=patients/form&id=<?= (int)$r['id'] ?>">Editar</a>
       </td>
@@ -27,3 +32,4 @@
   <?php endforeach; if (empty($rows)) echo '<tr><td colspan="5">Nenhum registro.</td></tr>'; ?>
   </tbody>
 </table>
+

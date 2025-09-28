@@ -28,6 +28,16 @@
         <a class="btn sm" href="<?= e(APP_URL) ?>/?r=patients/view&id=<?= (int)$r['id'] ?>">Abrir</a>
         <a class="btn sm" href="<?= e(APP_URL) ?>/?r=patients/form&id=<?= (int)$r['id'] ?>">Editar</a>
       </td>
+      <td>
+  <?php if (user_has_role(['enfermeira','secretaria','admin'])): ?>
+    <a class="btn sm" href="<?= e(APP_URL) ?>/?r=triage/form&patient_id=<?= (int)$r['id'] ?>">Triagem</a>
+  <?php endif; ?>
+  <a class="btn sm" href="<?= e(APP_URL) ?>/?r=patients/view&id=<?= (int)$r['id'] ?>">Abrir</a>
+  <?php if (user_has_role(['enfermeira','secretaria','admin'])): ?>
+    <a class="btn sm" href="<?= e(APP_URL) ?>/?r=patients/form&id=<?= (int)$r['id'] ?>">Editar</a>
+  <?php endif; ?>
+</td>
+
     </tr>
   <?php endforeach; if (empty($rows)) echo '<tr><td colspan="5">Nenhum registro.</td></tr>'; ?>
   </tbody>

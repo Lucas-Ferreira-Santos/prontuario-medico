@@ -11,5 +11,7 @@
     <input type="password" name="password" required>
     <button class="btn primary" type="submit">Entrar</button>
     <p class="muted">Admin padrão: admin@local / admin123</p>
+    <p class="muted">Admin enf: enf@local / 123456</p>
+    <p class="muted">Admin med: medico@local / 123456</p>
   </form>
 </div>

@@ -13,7 +13,10 @@
   <?php if (!empty($v['triage_motive'])):
   $risk = strtolower((string)$v['triage_risk']);
   $colors = ['verde'=>'#22c55e','amarelo'=>'#eab308','laranja'=>'#f97316','vermelho'=>'#ef4444'];
-  $badge = $risk ? '<span style="background:'.$colors[$risk]??'#444'.';padding:2px 8px;border-radius:8px;color:#000;font-weight:700">'.e($risk).'</span>' : '';
+  $badge = $risk
+  ? '<span style="background:'.(($colors[$risk] ?? '#444')).';padding:2px 8px;border-radius:8px;color:#000;font-weight:700">'.e($risk).'</span>'
+  : '';
+
 ?>
   <h3>Resumo da Triagem</h3>
   <p><b>Hora:</b> <?= e($v['triage_time']) ?> <?= $badge ?></p>
@@ -36,7 +39,10 @@
   <?php
     $risk = strtolower(trim((string)($v['triage_risk'] ?? '')));
     $colors = ['verde'=>'#22c55e','amarelo'=>'#eab308','laranja'=>'#f97316','vermelho'=>'#ef4444'];
-    $badge = $risk ? '<span style="background:'.$colors[$risk]??'#444'.';padding:2px 8px;border-radius:8px;color:#000;font-weight:700">'.e($risk).'</span>' : '';
+    $badge = $risk
+  ? '<span style="background:'.(($colors[$risk] ?? '#444')).';padding:2px 8px;border-radius:8px;color:#000;font-weight:700">'.e($risk).'</span>'
+  : '';
+
   ?>
   <p><b>Motivo:</b> <?= nl2br(e($v['triage_motive'])) ?> <?= $badge ?></p>
   <p><b>Comorbidades:</b> <?= nl2br(e($v['triage_comorbidities'])) ?></p>

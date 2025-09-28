@@ -9,7 +9,20 @@
       <a class="btn primary" href="<?= e(APP_URL) ?>/?r=triage/form&patient_id=<?= (int)$p['id'] ?>">+ Nova Triagem</a>
     <?php endif; ?>
 
+    <?php if (user_has_role(['medico','admin'])): ?><div class="bar">
+  <h2><?= e($p['name']) ?></h2>
+  <div>
+    <a class="btn" href="<?= e(APP_URL) ?>/?r=patients/index">Voltar</a>
+    <?php if (user_has_role(['enfermeira','secretaria','admin'])): ?>
+      <a class="btn" href="<?= e(APP_URL) ?>/?r=patients/form&id=<?= (int)$p['id'] ?>">Editar</a>
+      <a class="btn primary" href="<?= e(APP_URL) ?>/?r=triage/form&patient_id=<?= (int)$p['id'] ?>">+ Nova Triagem</a>
+    <?php endif; ?>
     <?php if (user_has_role(['medico','admin'])): ?>
+      <a class="btn primary" href="<?= e(APP_URL) ?>/?r=triage/index&status=pendente">Fila Pendente</a>
+    <?php endif; ?>
+  </div>
+</div>
+
       <!-- Médico inicia a consulta; se quiser forçar usar triagem, veja nota abaixo -->
       <a class="btn primary" href="<?= e(APP_URL) ?>/?r=visits/form&patient_id=<?= (int)$p['id'] ?>">+ Nova Consulta</a>
     <?php endif; ?>
